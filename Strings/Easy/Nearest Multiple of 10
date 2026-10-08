@@ -1,0 +1,29 @@
+class Solution {
+    public static String roundToNearest(String str) {
+        int n = str.length();
+        int lastDigit = str.charAt(n - 1) - '0';
+
+        if (lastDigit <= 5) {
+            return str.substring(0, n - 1) + "0";
+        } else {
+            StringBuilder result = new StringBuilder(str);
+
+            result.setCharAt(n - 1, '0');
+
+            int i = n - 2;
+
+            while (i >= 0 && result.charAt(i) == '9') {
+                result.setCharAt(i, '0');
+                i--;
+            }
+
+            if (i >= 0) {
+                result.setCharAt(i, (char)(result.charAt(i) + 1));
+            } else {
+                result.insert(0, '1');
+            }
+
+            return result.toString();
+        }
+    }
+}
