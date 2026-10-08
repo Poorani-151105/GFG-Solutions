@@ -1,0 +1,6 @@
+class Solution {
+    public static ArrayList<Integer> insertAtEnd(ArrayList<Integer> arr, int val) {
+        arr.add(val);
+        return arr;
+    }
+}
