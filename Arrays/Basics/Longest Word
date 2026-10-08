@@ -1,0 +1,13 @@
+class Solution {
+    public static String longest(String[] arr) {
+        String longest = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i].length() > longest.length()) {
+                longest = arr[i];
+            }
+        }
+
+        return longest;
+    }
+}
