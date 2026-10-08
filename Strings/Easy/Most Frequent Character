@@ -1,0 +1,19 @@
+class Solution {
+    public static char getMaxOccuringChar(String s) {
+        int[] count = new int[26];
+
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        char result = 'a';
+
+        for (int i = 1; i < 26; i++) {
+            if (count[i] > count[result - 'a']) {
+                result = (char) ('a' + i);
+            }
+        }
+
+        return result;
+    }
+}
