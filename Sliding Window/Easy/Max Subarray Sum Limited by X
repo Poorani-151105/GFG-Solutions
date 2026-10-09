@@ -1,0 +1,23 @@
+class Solution {
+    public static int maxSum(int[] arr, int x) {
+        TreeSet<Long> set = new TreeSet<>();
+        set.add(0L);
+
+        long prefix = 0;
+        long max = 0;
+
+        for (int num : arr) {
+            prefix += num;
+
+            Long value = set.ceiling(prefix - x);
+
+            if (value != null) {
+                max = Math.max(max, prefix - value);
+            }
+
+            set.add(prefix);
+        }
+
+        return (int) max;
+    }
+}
