@@ -1,0 +1,21 @@
+class Solution {
+    public static int longestSubarray(int[] arr) {
+        int gcd = 0;
+
+        for (int num : arr) {
+            gcd = findGCD(gcd, num);
+        }
+
+        return gcd == 1 ? arr.length : -1;
+    }
+
+    static int findGCD(int a, int b) {
+        while (b != 0) {
+            int temp = a % b;
+            a = b;
+            b = temp;
+        }
+
+        return a;
+    }
+}
