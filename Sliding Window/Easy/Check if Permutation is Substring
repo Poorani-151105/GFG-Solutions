@@ -1,0 +1,24 @@
+class Solution {
+    public static boolean search(String txt, String pat) {
+        if (pat.length() > txt.length()) return false;
+
+        int[] countPat = new int[26];
+        int[] countWindow = new int[26];
+
+        for (int i = 0; i < pat.length(); i++) {
+            countPat[pat.charAt(i) - 'a']++;
+            countWindow[txt.charAt(i) - 'a']++;
+        }
+
+        for (int i = pat.length(); i < txt.length(); i++) {
+            if (java.util.Arrays.equals(countPat, countWindow)) {
+                return true;
+            }
+
+            countWindow[txt.charAt(i - pat.length()) - 'a']--;
+            countWindow[txt.charAt(i) - 'a']++;
+        }
+
+        return java.util.Arrays.equals(countPat, countWindow);
+    }
+}
