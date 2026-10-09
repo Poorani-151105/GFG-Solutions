@@ -1,0 +1,35 @@
+class Solution {
+    public static void sortHalves(int[] arr) {
+        int n = arr.length;
+        int k = 0;
+
+        while (k < n - 1 && arr[k] <= arr[k + 1]) {
+            k++;
+        }
+
+        int[] result = new int[n];
+        int i = 0;
+        int j = k + 1;
+        int index = 0;
+
+        while (i <= k && j < n) {
+            if (arr[i] <= arr[j]) {
+                result[index++] = arr[i++];
+            } else {
+                result[index++] = arr[j++];
+            }
+        }
+
+        while (i <= k) {
+            result[index++] = arr[i++];
+        }
+
+        while (j < n) {
+            result[index++] = arr[j++];
+        }
+
+        for (i = 0; i < n; i++) {
+            arr[i] = result[i];
+        }
+    }
+}
