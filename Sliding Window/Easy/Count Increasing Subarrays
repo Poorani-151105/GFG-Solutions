@@ -1,0 +1,18 @@
+class Solution {
+    public static int countIncreasing(int[] arr) {
+        int count = 0;
+        int length = 1;
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1]) {
+                length++;
+            } else {
+                length = 1;
+            }
+
+            count += length - 1;
+        }
+
+        return count;
+    }
+}
